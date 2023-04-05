@@ -1,23 +1,40 @@
 import { useContext, useEffect, useState } from "react";
-import { Card, Grid } from "@mui/material";
+import { Card, Collapse, Grid } from "@mui/material";
 import { PlayerContext } from "../context/PlayerContext";
 
 const CharacterClass = ({ characterName, minAttributes }) => {
-
-  // const [attributes] = useContext(PlayerContext);
-  const [isAchievable, setIsAchievable] = useState(true);
+  const [isAchievable, setIsAchievable] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const [attributes] = useContext(PlayerContext);
 
+
+
   useEffect(() => {
-    for (var key in attributes) {
-      if (attributes.hasOwnProperty(key)) {
-        if (attributes[key] < minAttributes[key]) setIsAchievable(false);
+    function compareAttributes() {
+      for (let key in minAttributes) {
+        if (attributes[key] < minAttributes[key]) {
+          return false;
+        }
       }
+      return true;
     }
-  }, [attributes]);
+    setIsAchievable(compareAttributes());
+  }, [attributes, minAttributes]);
 
   return (
-    <Card variant="outlined" sx={{ p: 4, backgroundColor: `${isAchievable ? "green" : "red"}` }}> {characterName}</Card >
+    <>
+      <Grid>
+        <Card variant="outlined" sx={{ p: 4, backgroundColor: `${isAchievable ? "#7AA874" : "#CE5959"}` }} onClick={() => setExpanded(!expanded)}>
+          {characterName}
+        </Card >
+        <Collapse in={expanded}>
+          <Card variant="outlined" sx={{ p: 4, textAlign: 'center' }}>
+            {JSON.stringify(minAttributes)}
+          </Card >
+        </Collapse>
+      </Grid>
+
+    </>
   );
 }
 
