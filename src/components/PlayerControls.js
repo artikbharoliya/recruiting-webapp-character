@@ -28,10 +28,9 @@ const AttributeControl = ({ attribute }) => {
   useEffect(() => {
     if (attributes) {
       let sum = 0;
-      Object.entries(attributes).map((attribute) => {
-        sum += attribute[1];
-
-      });
+      Object.entries(attributes).map((attribute) => (
+        sum += attribute[1]
+      ));
       setDisable(sum > 70);
     }
   }, [attributes]);

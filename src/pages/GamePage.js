@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import CharacterClass from "../components/CharacterClass";
 import PlayerControls from "../components/PlayerControls";
+import CharacterSheet from "../components/CharacterSheet";
 
 const GamePage = () => {
   return (
@@ -33,6 +34,9 @@ const GamePage = () => {
       </Grid>
       <Grid sx={{ mt: 6 }} >
         <PlayerControls />
+      </Grid>
+      <Grid>
+        <CharacterSheet />
       </Grid>
     </Grid>
   );
