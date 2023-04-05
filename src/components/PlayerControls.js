@@ -1,11 +1,12 @@
 import { Button, Grid } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PlayerContext } from "../context/PlayerContext";
 import { ATTRIBUTE_LIST } from "../consts";
 
 const AttributeControl = ({ attribute }) => {
 
   const [attributes, setAttributes] = useContext(PlayerContext);
+  const [disable, setDisable] = useState(false);
 
   const handleIncrement = () => {
     let attributeInitialValue = attributes[attribute];
@@ -23,6 +24,18 @@ const AttributeControl = ({ attribute }) => {
     }
     setAttributes(newState);
   }
+
+  useEffect(() => {
+    if (attributes) {
+      let sum = 0;
+      Object.entries(attributes).map((attribute) => {
+        sum += attribute[1];
+
+      });
+      setDisable(sum > 70);
+    }
+  }, [attributes]);
+
   return (
     <Grid
       sx={{ minWidth: "150px", my: 1, px: 2 }}
@@ -37,6 +50,7 @@ const AttributeControl = ({ attribute }) => {
       <Button
         variant="outlined"
         onClick={handleIncrement}
+        disabled={disable}
       > + </Button>
     </Grid>
   );
