@@ -14,8 +14,9 @@ const CharacterClass = ({ characterName, minAttributes }) => {
   }, []);
 
   return (
-    // <Card variant="outlined" sx={{ p: 4, backgroundColor: { (isAchievable) ? "#7DB9B6" : "#E96479" }}}> { characterName }</Card >
-    <></>
+    <>
+      <div>{characterName}</div>
+    </>
   );
 }
 
