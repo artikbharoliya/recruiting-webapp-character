@@ -8,6 +8,7 @@ const PrintableAttributes = ({ minAttributes }) => {
   return attr;
 }
 
+// Component responsible for showing which class the player can unlock.
 const CharacterClass = ({ characterName, minAttributes }) => {
   const [isAchievable, setIsAchievable] = useState(false);
   const [expanded, setExpanded] = useState(false);

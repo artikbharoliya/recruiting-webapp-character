@@ -28,10 +28,9 @@ const AttributeControl = ({ attribute }) => {
   useEffect(() => {
     if (attributes) {
       let sum = 0;
-      Object.entries(attributes).map((attribute) => {
-        sum += attribute[1];
-
-      });
+      Object.entries(attributes).map((attribute) => (
+        sum += attribute[1]
+      ));
       setDisable(sum > 70);
     }
   }, [attributes]);
@@ -56,11 +55,12 @@ const AttributeControl = ({ attribute }) => {
   );
 }
 
+// Component that allows player to modify the individual attributes
 const PlayerControls = () => {
   return (
     <Grid container>
       {ATTRIBUTE_LIST.map((attribute) => (
-        <AttributeControl attribute={attribute} />
+        <AttributeControl attribute={attribute} key={attribute} />
       ))}
     </Grid>
   );

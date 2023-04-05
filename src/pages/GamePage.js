@@ -1,10 +1,12 @@
 import { Grid } from "@mui/material";
 import CharacterClass from "../components/CharacterClass";
 import PlayerControls from "../components/PlayerControls";
+import CharacterSheet from "../components/CharacterSheet";
 
+// The main page of the game that holds all the components.
 const GamePage = () => {
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" alignItems="center">
       <Grid container justifyContent="space-around" >
         <CharacterClass characterName="Barbarian" minAttributes={{
           'Strength': 14,
@@ -33,6 +35,9 @@ const GamePage = () => {
       </Grid>
       <Grid sx={{ mt: 6 }} >
         <PlayerControls />
+      </Grid>
+      <Grid>
+        <CharacterSheet />
       </Grid>
     </Grid>
   );
