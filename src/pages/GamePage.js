@@ -5,7 +5,7 @@ import CharacterSheet from "../components/CharacterSheet";
 
 const GamePage = () => {
   return (
-    <Grid container direction="column">
+    <Grid container direction="column" alignItems="center">
       <Grid container justifyContent="space-around" >
         <CharacterClass characterName="Barbarian" minAttributes={{
           'Strength': 14,

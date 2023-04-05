@@ -67,6 +67,24 @@ const CharacterSheet = () => {
             </TableRow>
           </TableHead>
           <TableBody>
+            {characterSheet.length > 0 ?
+              characterSheet.map((skill) => {
+                return (
+                  <TableRow
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {skill.skill}
+                    </TableCell>
+                    <TableCell align="right">{skill?.skillData?.spend}</TableCell>
+                    <TableCell align="right">{skill?.skillData?.points}</TableCell>
+                    <TableCell align="right">{skill?.skillData?.attrModifier}</TableCell>
+                    <TableCell align="right">{skill?.skillData?.numberOfAttributeModifier}</TableCell>
+                    <TableCell align="right">{skill?.skillData?.skillValue}</TableCell>
+                  </TableRow>);
+              })
+              : null}
+
           </TableBody>
         </Table>
       </TableContainer>
