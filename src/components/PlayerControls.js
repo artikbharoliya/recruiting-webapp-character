@@ -1,6 +1,7 @@
 import { Button, Grid } from "@mui/material";
 import { useContext } from "react";
 import { PlayerContext } from "../context/PlayerContext";
+import { ATTRIBUTE_LIST } from "../consts";
 
 const AttributeControl = ({ attribute }) => {
 
@@ -23,7 +24,11 @@ const AttributeControl = ({ attribute }) => {
     setAttributes(newState);
   }
   return (
-    <Grid container>
+    <Grid
+      sx={{ minWidth: "150px", my: 1, px: 2 }}
+      container
+      justifyContent="center"
+      alignItems="center">
       <Button
         variant="outlined"
         onClick={handleDecrement}
@@ -40,12 +45,9 @@ const AttributeControl = ({ attribute }) => {
 const PlayerControls = () => {
   return (
     <Grid container>
-      <AttributeControl attribute="Strength" />
-      <AttributeControl attribute="Dexterity" />
-      <AttributeControl attribute="Constitution" />
-      <AttributeControl attribute="Intelligence" />
-      <AttributeControl attribute="Wisdom" />
-      <AttributeControl attribute="Charisma" />
+      {ATTRIBUTE_LIST.map((attribute) => (
+        <AttributeControl attribute={attribute} />
+      ))}
     </Grid>
   );
 }
