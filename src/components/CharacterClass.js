@@ -5,18 +5,19 @@ import { PlayerContext } from "../context/PlayerContext";
 const CharacterClass = ({ characterName, minAttributes }) => {
 
   // const [attributes] = useContext(PlayerContext);
-  const [isAchievable, setIsAchievable] = useState(false);
+  const [isAchievable, setIsAchievable] = useState(true);
   const [attributes] = useContext(PlayerContext);
 
   useEffect(() => {
-    console.log(attributes);
-    console.log(JSON.stringify(minAttributes));
-  }, []);
+    for (var key in attributes) {
+      if (attributes.hasOwnProperty(key)) {
+        if (attributes[key] < minAttributes[key]) setIsAchievable(false);
+      }
+    }
+  }, [attributes]);
 
   return (
-    <>
-      <div>{characterName}</div>
-    </>
+    <Card variant="outlined" sx={{ p: 4, backgroundColor: `${isAchievable ? "green" : "red"}` }}> {characterName}</Card >
   );
 }
 
