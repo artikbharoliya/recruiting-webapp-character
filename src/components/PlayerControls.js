@@ -55,11 +55,12 @@ const AttributeControl = ({ attribute }) => {
   );
 }
 
+// Component that allows player to modify the individual attributes
 const PlayerControls = () => {
   return (
     <Grid container>
       {ATTRIBUTE_LIST.map((attribute) => (
-        <AttributeControl attribute={attribute} />
+        <AttributeControl attribute={attribute} key={attribute} />
       ))}
     </Grid>
   );

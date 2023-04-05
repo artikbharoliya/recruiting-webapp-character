@@ -3,6 +3,7 @@ import CharacterClass from "../components/CharacterClass";
 import PlayerControls from "../components/PlayerControls";
 import CharacterSheet from "../components/CharacterSheet";
 
+// The main page of the game that holds all the components.
 const GamePage = () => {
   return (
     <Grid container direction="column" alignItems="center">

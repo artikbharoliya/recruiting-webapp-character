@@ -21,6 +21,7 @@ const calculateSkillValue = (numberOfAttributeModifier, spend) => {
   return numberOfAttributeModifier + spend;
 }
 
+// Component responsible for all the calculations related to the character sheet.
 const CharacterSheet = () => {
 
   const [characterSheet, setCharacterSheet] = useState([]);
@@ -34,7 +35,7 @@ const CharacterSheet = () => {
       let attrModifier = findAttributeAssociatedWithSill(skill);
       let numberOfAttributeModifier = calculateAttributeModifiers(attributes[attrModifier]);
       let points = calculatePoints(numberOfAttributeModifier);
-      // Assuming that the player can use all the points for a skill
+      // Assuming that the player can use all the points for a skill. For example if a player has 18 points to spend, I'm assuming that the players spends all the points on the same skill.
       let spend = points;
       let skillValue = calculateSkillValue(numberOfAttributeModifier, spend);
       let skillData = {
@@ -65,9 +66,7 @@ const CharacterSheet = () => {
       .then((data) => {
         setError(!(data?.statusCode === 200));
       });
-
   }
-
 
   return (
     <Grid container sx={{ maxWidth: '750px' }} justifyContent='center'>
@@ -91,6 +90,7 @@ const CharacterSheet = () => {
                 return (
                   <TableRow
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    key={skill.skill}
                   >
                     <TableCell component="th" scope="row">
                       {skill.skill}
